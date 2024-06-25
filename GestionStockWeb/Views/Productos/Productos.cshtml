@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    @model IEnumerable<GestionStockWeb.Models.Producto>
+
+        @{
+        ViewData["Title"] = "Productos en Stock";
+        }
+
+        <h1>Productos en Stock</h1>
+
+        @if (!Model.Any())
+        {
+        <div>
+            <h2>Not Found</h2>
+            <p>No se encontraron productos en stock.</p>
+        </div>
+        }
+        else
+        {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in Model)
+                {
+                <tr>
+                    <td>@producto.NombreP</td>
+                    <td>@producto.CantidadP</td>
+                    <td>@producto.CategoriaFkNavigation?.NombreC</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        }
+</body>
+</html>
